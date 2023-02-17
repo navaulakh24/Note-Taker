@@ -11,8 +11,6 @@ app.use(express.json());
 app.use('/', htmlroutes);
 app.use('/api', apiroutes);
 
-// require('./routes/apiroutes')(app);
-// require('./routes/htmlroutes')(app);
 
 app.listen(PORT, () => {
     console.log(`Server available at localhost${PORT}`);

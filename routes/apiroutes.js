@@ -1,24 +1,57 @@
 const path = require('path');
 const fs= require('fs');
+const router = require('express').Router();
+let dbData = require('../db/db.json');
 
 var uniqid= require('uniqid');
 
-module.exports= (app) => {
-
-    app.get('/api/notes', (req, res) => {
-        res.sendFile(path.join(__dirname, '../db/db.json'));
+    router.get('/notes', (req, res) => {
+        fs.readFile('../note-taker/db/db.json', 'utf8', (err, data) => {
+            if(err) {
+                console.log(err);
+            } else {
+                res.json(JSON.parse(data));
+            }
+        })
     });
 
 
 
-    app.post('/api/notes', (req, res) => {
-
+    router.post('/notes', (req, res) => {
+        const { title, text } = req.body;
+        if(title && text) {
+            const newNote = {
+                title, 
+                text,
+                id: uniqid()
+            }
+            fs.readFile("../note-taker/db/db.json", 'utf8', (err, data) => {
+                if(err) {
+                    console.log(err);
+                } else {
+                    const parsedNotes = JSON.parse(data)
+                    parsedNotes.push(newNote)
+                    dbData = parsedNotes
+                    fs.writeFile("../note-taker/db/db.json", JSON.stringify(parsedNotes), (err) => {
+                        err ? console.error(err) : console.log("added note")
+                    });
+                }
+            })
+            const response = {
+                body: newNote
+            }
+            console.log(response)
+            res.json(response)
+        } else {
+            res.json('error creating notes')
+        }
     })
 
 
 
 
-    app.delete('/api/notes/:id', (req, res) => {
+    // router.delete('/notes/:id', (req, res) => {
 
-    })
-};
+    // })
+
+    module.exports = router
