@@ -1,9 +1,18 @@
 # Note-Taker
 
+![badge](https://img.shields.io/badge/license-MIT-orange)
+
 ## Description
 This application was built to allow users to input notes and be able to save and delete them.
-This application uses Node.js, Express.js and javascript to create the front end and back-end
+This application uses Node.js and Express.js back end and will save and retrieve note data from a JSON file.
 #
+
+## Table of Contents
+* [Installation](#installation)
+* [Usage](#usage)
+* [Deployed Link](#deployed-link)
+* [License](#license)
+* [Information](#information)
 
 ## User Story
 
@@ -33,22 +42,35 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 ```
 #
 
+![Mock up](./assets/Screenshot%20(15).png)
+![Mock up](./assets/Screenshot%20(16).png)
+![Mock up](./assets/Screenshot%20(17).png)
+
 ## Installation
 In order to run this application on your local machine, you must download all the files. Then you must run 'npm i' in the command line of your terminal to install all packages. Once all packages have been installed, open terminal and run 'node server.js' in the command line.
 
 Once initialized, the application can be opened in the browser by navigating to 'localhost:3001'.
+To end your serve in your terminal type 'control + c'.
 
 You can also use the heroku link for easier access.
 #
 
+## Usage 
+After opening the app, the user will be presented with a landing page with a button that says "Get Started". When clicking the button, user will be taken to the notes app where they are able to enter a note with a title and be able to save it. The saved notes will then be displayed on the left hand side. You are also able to click and view all notes which will be displayed in the main section of the page. User will also have the option to delete notesusing the garbage icon next to a note in the sidebar.
+#
+
 ## Deployed Link
+Click [here]() for deployed application.
 #
 
 ## License 
-
+![badge](https://img.shields.io/badge/license-MIT-orange) 
+#
 
 ## Information
-GitHub repo: 
+GitHub repo: [Note-Taker](https://github.com/navaulakh24/Note-Taker)
+
 Heroku Link:
-For any questions or to report an issue, email me at:
+
+For any questions or to report an issue, email me at: navdeep_aulakh24@hotmail.com
 
