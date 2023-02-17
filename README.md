@@ -60,7 +60,7 @@ After opening the app, the user will be presented with a landing page with a but
 #
 
 ## Deployed Link
-Click [here]() for deployed application.
+Click [here](https://serene-sea-42618.herokuapp.com/) for deployed application.
 #
 
 ## License 
@@ -70,7 +70,7 @@ Click [here]() for deployed application.
 ## Information
 GitHub repo: [Note-Taker](https://github.com/navaulakh24/Note-Taker)
 
-Heroku Link:
+Heroku Link: https://serene-sea-42618.herokuapp.com/ 
 
 For any questions or to report an issue, email me at: navdeep_aulakh24@hotmail.com
 
