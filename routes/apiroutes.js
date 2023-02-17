@@ -36,7 +36,7 @@ var uniqid= require('uniqid');
                     parsedNotes.push(newNote)
                     dbData = parsedNotes
                     fs.writeFile("./db/db.json", JSON.stringify(parsedNotes), (err) => {
-                        err ? console.error(err) : console.log("added note")
+                        err ? console.error(err) : console.log("Added note")
                     });
                 }
             })
@@ -46,19 +46,29 @@ var uniqid= require('uniqid');
             console.log(response)
             res.json(response)
         } else {
-            res.json('error creating notes')
+            res.json('Error when adding note')
         }
     });
 
-
-
-
     router.delete('/notes/:id', (req, res) => {
-        let notesData = JSON.parse(fs.readFile('./db/db.json', 'utf8'));
-        let deleteNotes = notesData.filter(item => item.id !== req.params.id);
-        console.log(notesData);
-        fs.writeFile('./db/db.json', JSON.stringify(deleteNotes));
-        res.json(deleteNotes);
-    });
+        fs.readFile('./db/db.json', (err, data) => {
+            if(err) {
+                console.log(err);
+            } else {
+                let newData = JSON.parse(data);
+                console.log(newData);
+                let deleteNotes = newData.filter(item => item.id !== req.params.id);
+                console.log(deleteNotes);
+
+                fs.writeFile('./db/db.json', JSON.stringify(deleteNotes), (err, data) => {
+                    if(err) {
+                        console.log(err);
+                    } else {
+                        res.json(data);
+                    }
+                })
+            }
+        })
+    })
 
     module.exports = router
