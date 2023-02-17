@@ -6,7 +6,7 @@ let dbData = require('../db/db.json');
 var uniqid= require('uniqid');
 
     router.get('/notes', (req, res) => {
-        fs.readFile('../note-taker/db/db.json', 'utf8', (err, data) => {
+        fs.readFile('../db/db.json', 'utf8', (err, data) => {
             if(err) {
                 console.log(err);
             } else {
@@ -25,14 +25,14 @@ var uniqid= require('uniqid');
                 text,
                 id: uniqid()
             }
-            fs.readFile("../note-taker/db/db.json", 'utf8', (err, data) => {
+            fs.readFile("../db/db.json", 'utf8', (err, data) => {
                 if(err) {
                     console.log(err);
                 } else {
                     const parsedNotes = JSON.parse(data)
                     parsedNotes.push(newNote)
                     dbData = parsedNotes
-                    fs.writeFile("../note-taker/db/db.json", JSON.stringify(parsedNotes), (err) => {
+                    fs.writeFile("../db/db.json", JSON.stringify(parsedNotes), (err) => {
                         err ? console.error(err) : console.log("added note")
                     });
                 }
