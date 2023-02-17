@@ -5,7 +5,9 @@ const router = require('express').Router();
 let dbData = require('../db/db.json');
 
 //package that allows for unique id's to be created
-var uniqid= require('uniqid');
+// var uniqid= require('uniqid');
+
+const { v4: uuidv4 } = require('uuid');
 
 //GET should read the db.json file and return all saved notes as JSON
     router.get('/notes', (req, res) => {
@@ -26,7 +28,7 @@ var uniqid= require('uniqid');
             const newNote = {
                 title, 
                 text,
-                id: uniqid()
+                id: uuidv4()
             }
             fs.readFile("./db/db.json", 'utf8', (err, data) => {
                 if(err) {
@@ -69,6 +71,6 @@ var uniqid= require('uniqid');
                 })
             }
         })
-    })
+    });
 
     module.exports = router
